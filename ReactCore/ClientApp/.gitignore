@@ -22,3 +22,4 @@ yarn-error.log*
 
 #package-lock.json - Воно не треба
 package-lock.json
+yarn.lock
