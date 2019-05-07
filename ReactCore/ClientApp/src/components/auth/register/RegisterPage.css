@@ -1,3 +1,7 @@
 .page {
     margin-top:10;
 }
+.photo {
+    width: 200px;
+    cursor: pointer;
+}
