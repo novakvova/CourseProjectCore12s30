@@ -1,9 +1,10 @@
 import React from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './NavMenu.css';
 
-export default class NavMenu extends React.Component {
+class NavMenu extends React.Component {
   constructor (props) {
     super(props);
 
@@ -18,6 +19,7 @@ export default class NavMenu extends React.Component {
     });
   }
   render () {
+    console.log('------navMenu Props---------', this.props);
     return (
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" light >
@@ -38,6 +40,9 @@ export default class NavMenu extends React.Component {
                 <li className="nav-item">
                   <Link className="text-dark nav-link" to="/register">Register</Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="text-dark nav-link" to="/register">{this.props.user_name}</Link>
+                </li>
               </ul>
             </Collapse>
           </Container>
@@ -46,3 +51,11 @@ export default class NavMenu extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user_name: state.auth.user.name
+  };
+}
+
+export default connect(mapStateToProps, null)(NavMenu);

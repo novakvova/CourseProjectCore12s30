@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import axios from 'axios';
 
 class RegisterForm extends Component {
     state = { 
@@ -53,6 +54,11 @@ class RegisterForm extends Component {
          const isValid = Object.keys(errors).length === 0;
          if (isValid) {
              //Відправляємо запит на сервер
+            axios.post('/api/Account/register',{email: 'asfasfd'})
+                .then(
+                    (res) => { console.log('---responce OK---'); },
+                    (bad) => { console.log('---badRequest---'); } 
+                );
          }
          else {
             this.setState({ errors });
